@@ -32,7 +32,7 @@ def process_text(title, abstract):
     words, phrases = create_stopwords()
 
     # set api key
-    api_key = "AIzaSyCUEe9Ukh87DRG_IHdBQ-Yz_GIlbvGsNkY"
+    api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXX"
     genai.configure(api_key=api_key)
 
     # create a model object
