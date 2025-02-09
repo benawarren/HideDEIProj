@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Processor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>De-DEI-ifier</h1>
+
+    <label for="title">Title</label>
+    <input type="text" id="title" placeholder="Enter title">
+
+    <label for="abstract">Abstract</label>
+    <textarea id="abstract" placeholder="Enter abstract" rows="4"></textarea>
+
+    <button onclick="processText()">Submit</button>
+
+    <div id="output" class="output-box"></div>
+</div>
+
+<script>
+    function processText() {
+        let title = document.getElementById("title").value;
+        let abstract = document.getElementById("abstract").value;
+
+        fetch('/process', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ title: title, abstract: abstract })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("output").innerText = data.result;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+</body>
+</html>
