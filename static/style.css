@@ -1,71 +1,78 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #3a3a5e);
     margin: 0;
     padding: 0;
+    color: #e0e0e0;
 }
 
 .container {
     width: 80%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #00d4ff;
     margin-bottom: 20px;
+    font-size: 28px;
 }
 
 label {
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
     display: block;
     margin-bottom: 8px;
 }
 
 input, textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    border: 2px solid #00d4ff;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
     margin-bottom: 20px;
+    transition: 0.3s;
 }
 
 input:focus, textarea:focus {
-    border-color: #007BFF;
+    border-color: #ff77aa;
     outline: none;
 }
 
 button {
     width: 100%;
-    padding: 12px;
-    background-color: #007BFF;
+    padding: 14px;
+    background: #00d4ff;
     color: white;
     font-size: 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: #ff77aa;
 }
 
 .output-box {
     margin-top: 20px;
     padding: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #00d4ff;
     border-radius: 8px;
     white-space: pre-wrap; /* Keep line breaks */
     font-family: monospace;
     font-size: 16px;
-    color: #333;
+    color: #e0e0e0;
 }

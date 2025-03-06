@@ -5,9 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Processor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function processText() {
+            let title = document.getElementById("title").value;
+            let abstract = document.getElementById("abstract").value;
+            document.getElementById("loading").style.display = "block";
+
+            fetch('/process', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title: title, abstract: abstract })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("output").innerText = data.result;
+                document.getElementById("loading").style.display = "none";
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function uploadStopwords() {
+            let fileInput = document.getElementById("stopwordsFile");
+            let formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
 </head>
 <body>
-
 <div class="container">
     <h1>De-DEI-ifier</h1>
 
@@ -18,11 +52,15 @@
     <textarea id="abstract" placeholder="Enter abstract" rows="4"></textarea>
 
     <button onclick="processText()">Submit</button>
-
+    <div id="loading" style="display:none;">Processing...</div>
     <div id="output" class="output-box"></div>
+
+    <h2>Upload Custom Stopwords</h2>
+    <input type="file" id="stopwordsFile">
+    <button onclick="uploadStopwords()">Upload</button>
 </div>
 
-<script>
+<!-- <script>
     function processText() {
         let title = document.getElementById("title").value;
         let abstract = document.getElementById("abstract").value;
@@ -40,7 +78,7 @@
         })
         .catch(error => console.error('Error:', error));
     }
-</script>
+</script> -->
 
 </body>
 </html>
